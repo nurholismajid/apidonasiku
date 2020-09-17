@@ -24,8 +24,18 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.get('/:id', (req, res, next) => {
-    var sql = `SELECT posts.id_post, posts.id_category, posts.create_at, categorysposts.name_category, penerimas.id_penerima, penerimas.nama_penerima, posts.slug, posts.thumbnail, posts.title, posts.headline, posts.content, posts.publish, posts.id_user, users.nama_user FROM posts INNER JOIN categorysposts ON categorysposts.id_category = posts.id_category INNER JOIN users ON users.id_user = posts.id_user  LEFT JOIN penerimas ON penerimas.id_penerima = posts.id_penerima where posts.id_post = "${req.params.id}" AND posts.delete_at is null ORDER BY posts.title ASC`;
+router.get('/:slug', (req, res, next) => {
+    var sql = `SELECT posts.id_post, posts.id_category, posts.create_at, categorysposts.name_category, penerimas.id_penerima, penerimas.nama_penerima, posts.slug, posts.thumbnail, posts.title, posts.headline, posts.content, posts.publish, posts.id_user, users.nama_user FROM posts INNER JOIN categorysposts ON categorysposts.id_category = posts.id_category INNER JOIN users ON users.id_user = posts.id_user  LEFT JOIN penerimas ON penerimas.id_penerima = posts.id_penerima where posts.slug = "${req.params.slug}" AND posts.delete_at is null ORDER BY posts.title ASC`;
+    db.query(sql, function(err, rows, fields) {
+        if (err) {
+            res.status(500).send({ status: "failed", message: "gagal mengambil data" });
+        }
+        res.json({ status: "success", message: "Data di perbarui", data: rows[0] });
+    })
+});
+
+router.get('/countpost/:category', (req, res, next) => {
+    var sql = `SELECT posts.id_post, posts.id_category, posts.create_at, categorysposts.name_category, penerimas.id_penerima, penerimas.nama_penerima, posts.slug, posts.thumbnail, posts.title, posts.headline, posts.content, posts.publish, posts.id_user, users.nama_user FROM posts INNER JOIN categorysposts ON categorysposts.id_category = posts.id_category INNER JOIN users ON users.id_user = posts.id_user  LEFT JOIN penerimas ON penerimas.id_penerima = posts.id_penerima where posts.id_category = "${req.params.category}" AND posts.delete_at is null ORDER BY posts.title ASC`;
     db.query(sql, function(err, rows, fields) {
         if (err) {
             res.status(500).send({ status: "failed", message: "gagal mengambil data" });
