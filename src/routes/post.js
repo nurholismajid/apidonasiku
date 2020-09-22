@@ -46,7 +46,7 @@ router.get('/countpost/:category', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
     if (req.body.idcategory != "" && req.body.slug != "" && req.body.title != "" && req.body.headline != "" && req.body.content != "" && req.body.iduser != "" && req.body.foto != "" && req.body.typefile != "") {
-                    var urlfoto = "http://192.168.42.232:8080/images/posts/";
+                    var urlfoto = "http://192.168.10.203:8080/images/posts/";
                     var namefoto = Date.now() + req.body.typefile;
                     var pathimg = path.join(__dirname, '../../public/images/posts/') + namefoto;
 
@@ -57,7 +57,7 @@ router.post('/create', (req, res, next) => {
                     fs.writeFile(pathimg, base64Data, 'base64', function(err) {
                         console.log(err);
                     });
-
+                    
                     var sql = `INSERT INTO posts (id_post, id_category, id_penerima, slug, thumbnail, title, headline, content, publish, id_user, create_at) values ('${dateFormat(new Date(), "yyyy-mm-dd-h-MM-ss")}','${req.body.idcategory}','${req.body.idpenerima}','${req.body.slug}','${urlfoto+namefoto}','${req.body.title}','${req.body.headline}','${req.body.content}','draf','${req.body.iduser}','${timestamp}')`;
                     db.query(sql, function(err, result) {
                         if (err) {
@@ -83,7 +83,7 @@ router.put('/update/:id', (req, res, next) => {
                                 console.log(err);
                             });
 
-                            var urlfoto = "http://192.168.42.232:8080/images/posts/";
+                            var urlfoto = "http://192.168.10.203:8080/images/posts/";
                             var namefoto = Date.now() + req.body.typefile;
                             var pathimg = path.join(__dirname, '../../public/images/posts/') + namefoto;
                             var imgdata = req.body.foto;

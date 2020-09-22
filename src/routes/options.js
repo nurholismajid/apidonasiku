@@ -32,7 +32,7 @@ router.put('/update/:id', (req, res, next) => {
                                 console.log(err);
                             });
 
-                            var urlfoto = "http://192.168.42.232:8080/images/options/";
+                            var urlfoto = "http://192.168.10.203:8080/images/options/";
                             var namefoto = Date.now() + req.body.typefile;
                             var pathimg = path.join(__dirname, '../../public/images/options/') + namefoto;
                             var imgdata = req.body.foto;

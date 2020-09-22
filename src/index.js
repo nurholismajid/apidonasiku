@@ -10,6 +10,7 @@ const routeslider = require("./routes/slider");
 const routecontent = require("./routes/content");
 const routecategory = require("./routes/postcategory");
 const routepost = require("./routes/post");
+const routeapi  = require("./routes/api");
 
 const path = require('path');
 
@@ -41,6 +42,7 @@ app.use("/slider", routeslider);
 app.use("/content", routecontent);
 app.use("/category", routecategory);
 app.use("/post", routepost);
+app.use("/api", routeapi);
 app.use(express.static("public"))
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.info(`server runing on port ${PORT}`));
