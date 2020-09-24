@@ -24,7 +24,7 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
     if (req.body.category != "" && req.body.foto != "" && req.body.typefile != "") {
-                    var urlfoto = "http://192.168.10.203:8080/images/sliders/";
+                    var urlfoto = "http://192.168.10.218:8080/images/sliders/";
                     var namefoto = Date.now() + req.body.typefile;
                     var pathimg = path.join(__dirname, '../../public/images/sliders/') + namefoto;
 

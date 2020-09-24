@@ -36,7 +36,7 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
     if (req.body.nama != "" && req.body.nohp != "" && req.body.alamat != "" && req.body.biaya != "" && req.body.rincianbiaya != "" && req.body.foto != "" && req.body.typefile != "") {
-                    var urlfoto = "http://192.168.10.203:8080/images/penerimas/";
+                    var urlfoto = "http://192.168.10.218:8080/images/penerimas/";
                     var namefoto = Date.now() + req.body.typefile;
                     var pathimg = path.join(__dirname, '../../public/images/penerimas/') + namefoto;
 
@@ -73,7 +73,7 @@ router.put('/update/:id', (req, res, next) => {
                                 console.log(err);
                             });
 
-                            var urlfoto = "http://192.168.10.203:8080/images/penerimas/";
+                            var urlfoto = "http://192.168.10.218:8080/images/penerimas/";
                             var namefoto = Date.now() + req.body.typefile;
                             var pathimg = path.join(__dirname, '../../public/images/penerimas/') + namefoto;
                             var imgdata = req.body.foto;

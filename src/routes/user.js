@@ -43,7 +43,7 @@ router.post('/create', (req, res, next) => {
                 if (rows.length > 0) {
                     res.status(200).send({ status: "failed", message: "email sudah digunakan" });
                 } else {
-                    var urlfoto = "http://192.168.10.203:8080/images/users/";
+                    var urlfoto = "http://192.168.10.218:8080/images/users/";
                     var namefoto = Date.now() + req.body.typefile;
                     var pathimg = path.join(__dirname, '../../public/images/users/') + namefoto;
 
@@ -93,7 +93,7 @@ router.put('/update/:id', (req, res, next) => {
                                 console.log(err);
                             });
 
-                            var urlfoto = "http://192.168.10.203:8080/images/users/";
+                            var urlfoto = "http://192.168.10.218:8080/images/users/";
                             var namefoto = Date.now() + req.body.typefile;
                             var pathimg = path.join(__dirname, '../../public/images/users/') + namefoto;
                             var imgdata = req.body.foto;
@@ -144,7 +144,7 @@ router.put('/update/:id', (req, res, next) => {
                             console.log(err);
                         });
 
-                        var urlfoto = "http://192.168.10.203:8080/images/users/";
+                        var urlfoto = "http://192.168.10.218:8080/images/users/";
                         var namefoto = Date.now() + req.body.typefile;
                         var pathimg = path.join(__dirname, '../../public/images/users/') + namefoto;
                         var imgdata = req.body.foto;

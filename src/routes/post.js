@@ -46,7 +46,7 @@ router.get('/countpost/:category', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
     if (req.body.idcategory != "" && req.body.slug != "" && req.body.title != "" && req.body.headline != "" && req.body.content != "" && req.body.iduser != "" && req.body.foto != "" && req.body.typefile != "") {
-                    var urlfoto = "http://192.168.10.203:8080/images/posts/";
+                    var urlfoto = "http://192.168.10.218:8080/images/posts/";
                     var namefoto = Date.now() + req.body.typefile;
                     var pathimg = path.join(__dirname, '../../public/images/posts/') + namefoto;
 
@@ -83,7 +83,7 @@ router.put('/update/:id', (req, res, next) => {
                                 console.log(err);
                             });
 
-                            var urlfoto = "http://192.168.10.203:8080/images/posts/";
+                            var urlfoto = "http://192.168.10.218:8080/images/posts/";
                             var namefoto = Date.now() + req.body.typefile;
                             var pathimg = path.join(__dirname, '../../public/images/posts/') + namefoto;
                             var imgdata = req.body.foto;

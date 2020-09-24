@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
 router.post('/create', (req, res, next) => {
     if (req.body.iddonatur != "" && req.body.idpenerima != "" && req.body.nominal != "" && req.body.tanggal != "" && req.body.foto != "" && req.body.typefile != "") {
        
-                    var urlfoto = "http://192.168.10.203:8080/images/donasis/";
+                    var urlfoto = "http://192.168.10.218:8080/images/donasis/";
                     var namefoto = Date.now() + req.body.typefile;
                     var pathimg = path.join(__dirname, '../../public/images/donasis/') + namefoto;
 
