@@ -24,6 +24,15 @@ router.get('/penerima', (req, res, next) => {
     })
 });
 
+router.get('/donasi', (req, res, next) => {
+    var sql = "SELECT donasis.id_donasi, donasis.nominal_donasi,donasis.tanggal_transfer,donasis.bukti_transfer, donasis.status, donaturs.id_donatur, donaturs.nama_donatur, penerimas.id_penerima, penerimas.nama_penerima FROM donasis INNER JOIN donaturs ON donaturs.id_donatur = donasis.id_donatur INNER JOIN penerimas ON penerimas.id_penerima = donasis.id_penerima where donasis.status ='Sudah Dikonfirmasi' AND donasis.delete_at is null ORDER BY donasis.id_donasi DESC";
+    db.query(sql, function(err, rows, fields) {
+        if (err) {
+            res.status(500).send({ status: "failed", message: "gagal mengambil data" });
+        }
+        res.json({ status: "success", message: "Data di perbarui", data: rows });
+    })
+});
 
 
 module.exports = router
